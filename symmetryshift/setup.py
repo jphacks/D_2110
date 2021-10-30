@@ -1,9 +1,8 @@
 from setuptools import setup, find_packages
-with open('requirements.txt') as requirements_file:
-      install_requirements = requirements_file.read().splitlines()
+
 setup(
       name="symmetryshift",
-      version="0.0.2",
+      version="0.0.3",
       description="Create biological strucre unit from single PDB file",
       author="flat35hd99",
       packages=find_packages(),
