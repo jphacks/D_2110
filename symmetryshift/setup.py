@@ -10,7 +10,7 @@ setup(
       install_requires=install_requirements,
       entry_points={
             "console_scripts": [
-                  "symmetry=symmetry.create_biological_structure_unit:main",
+                  "symmetry=symmetryshift.create_biological_structure_unit:main",
             ]
       },
       classifiers=[
