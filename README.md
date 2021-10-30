@@ -2,6 +2,24 @@
 
 [![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2021/07/JPHACKS2021_ogp.jpg)](https://www.youtube.com/watch?v=LUPQFB4QyVo)
 
+
+## Quick install and use guide
+
+Installation needs distributed biopython we modified.
+
+```sh
+pip install git+https://github.com/flat35hd99/biopython
+pip install symmetryshift
+```
+
+and then, simply
+
+```sh
+symmetry 1KZU # Argument is pdb id.
+```
+
+Please check the `out.pdb` on your structure viewer and compare between `out.pdb` and `kz/pdb1kzu.ent`.(The latter is downloaded by biopython.)
+
 ## 製品概要
 ### 背景(製品開発のきっかけ、課題等）
 
