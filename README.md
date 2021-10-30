@@ -1,6 +1,17 @@
 # 生物学的構造単位生成器
 
-symmetry shift
+このREADMEやコード内ではsymmetry shiftと呼んでいます。
+
+## PAY ATTENTION PLEASE
+
+既存パッケージである`biopython`の中身を、そのパッケージのよさを失わないまま少しずつ機能を追加し、`biopython`の責務ではない部分を`symmetryshift`が吸収するという形で実装しました。ぜひ、symmetryshiftだけでなくbiopython([fork先](https://github.com/flat35hd99/biopython))もご確認ください。
+
+また、行っていることは単純ですが、その意義、方法はわかりにくいと感じたため、このREADMEにできるだけ補足を記しました。
+
+- [分子生物学的な前提知識](https://github.com/jphacks/D_2110#%E5%88%86%E5%AD%90%E7%94%9F%E7%89%A9%E5%AD%A6%E7%9A%84%E3%81%AA%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AD%98)
+- [製品説明](https://github.com/jphacks/D_2110#%E8%A3%BD%E5%93%81%E8%AA%AC%E6%98%8E%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E8%A3%BD%E5%93%81%E3%81%AE%E8%AA%AC%E6%98%8E)
+
+この二か所で特に詳しい説明を行っています。
 
 [![IMAGE ALT TEXT HERE](src/biological_assembly.jpg)](https://youtu.be/-h38XeSu9sA)
 
@@ -19,7 +30,16 @@ and then, simply
 symmetry 1KZU # Argument is pdb id.
 ```
 
-Please check the `out.pdb` on your structure viewer and compare between `out.pdb` and `kz/pdb1kzu.ent`.(The latter is downloaded by biopython.)
+Please check the `out.pdb` on your structure viewer and compare between `out.pdb` and `kz/pdb1kzu.ent`.(The latter is pdb file downloaded by biopython.)
+
+If you have not installed protein viewer
+
+- PyMOL
+  - We used it in demo and demo movie.
+  - Download installer from [official page](https://pymol.org/2/), run installer, and run `pymol`. `pymol` command launch GUI. Drug and drop pdb file and you can see a pdb file structure.
+- VMD
+  - need smaller disk space than PyMOL
+  - [VMDの使い方の基本 (Mac)](https://oosakik.hatenablog.com/entry/2019/11/10/VMD%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9_%E3%82%92%E5%88%9D%E5%BF%83%E8%80%85%E3%81%AB%E3%82%82%E3%82%8F%E3%81%8B%E3%82%8A%E3%82%84%E3%81%99%E3%81%8F_%28Mac%29) (windowsも同様) is helpful to instal and view pdb file.
 
 ## 製品概要
 ### 背景(製品開発のきっかけ、課題等）
@@ -71,17 +91,62 @@ PDBファイルには単位構造のデータのみしか記載されていな�
 
 本プロダクトは、この回転・並進の作業をほぼ全てのPDBファイルに対して自動化する。
 
-具体的な説明を行う。以下は開発した生物学的構造単位生成器、もとい symmetry shift のワークフロー図である。赤色が今回私たちが開発、または、機能追加した箇所である。黄緑（緑系）で示した箇所は`Bio.PDP`パッケージがあらかじめ備えていた機能である。
+具体的な説明を行う。以下は開発した生物学的構造単位生成器、もとい **symmetry shift** のワークフロー図である。赤色が今回私たちが開発、または、機能追加した箇所である。黄緑（緑系）で示した箇所は`Bio.PDP`パッケージがあらかじめ備えていた機能である。
 
 ![symmetryshiftのワークフロー図](src/workflow.drawio.svg)
 
-ユーザーは生物学的構造単位（生物学的に意味のある構造）を取得したいPDB IDをCLIから指定する。これ以上のユーザーからのインプットはない。すべてsymmetry shift内で完結する。
+ユーザーは生物学的構造単位（生物学的に意味のある構造）を取得したいPDB IDをCLI、またはPythonのパッケージの引数として指定する。これ以上のユーザーからのインプットはない。すべてsymmetry shift内で完結する。
 
 ```sh
 symmetry 5V8K # PDB ID is 5V8K
 ```
 
-symmetry shiftは受け取ったPDB IDを`Bio.PDB`を用いてPDB fileをサーバーから取得する（PDB fileは無償で公開されている）
+パッケージとして利用する場合:
+
+```python
+from symmetryshift.create_biological_structure_unit import create, save
+
+pdb_id = "5V8K"
+new_structure = create(pdb_id)
+save(new_structure)
+```
+
+symmetry shiftは`sys.argv`で受け取ったPDB IDを`Bio.PDB`を用いて無償公開データサーバーからPDB fileを取得する。(**Recieve PDB ID**)
+
+次にheaderの解析(**Get matrix**)と全原子の座標を取得(**Get coordinates of Atoms**)する。全原子の座標取得については特に手を加えていないので、ここではheaderの解析について説明する。
+
+PDB fileにはヘッダー行と呼ばれる領域が存在しており、そこに決まった形式で回転行列と並進ベクトルが記述されている。(詳しくはhogehoge参照)
+
+biopythonはヘッダーの一部を解析する`Bio.PDB.parse_pdb_header`モジュールが存在したため、これに独立して機能を追加する方法を採った。これは一つのcommitにまとめたので、[c4aae6f71c9929f1f500e8c368482bc6c1d33d34](https://github.com/flat35hd99/biopython/commit/c4aae6f71c9929f1f500e8c368482bc6c1d33d34#diff-489f4c709ac8e95f3002171793e65a4f5339a5ab137480d278b6b50f6a4dfb76)を参照いただきたい。簡潔に述べると
+
+- 既存データストア(`pdbh_dict`)に新しく`chain_ids_to_work_symmetry_operator`と`symmetry_operator`を追加し、これに保存するようにした。
+- 取得したいデータは行頭が`REMARK 350`であるため、ヒットしたときにデータをいい感じに取得してデータストアに保存するようにした。
+  - 複雑なデータ型になってしまったので、コメントで補足した。
+
+以上のように実装した。この箇所はbiopythonに単純に機能追加しても、biopythonの良さであるシンプル・独立な実装は失われないと判断したので、biopython内で実装した。
+
+次に取得した回転行列と並進ベクトルを作用させる箇所(**Operate rotate matrix and translation vector to coordinates**)の説明に移る。
+
+ここまでで必要なデータは全て取得できたので、演算のパートになる。
+
+ここに一つ工夫ポイントがある。[分子生物学的な前提知識](https://github.com/jphacks/D_2110#%E5%88%86%E5%AD%90%E7%94%9F%E7%89%A9%E5%AD%A6%E7%9A%84%E3%81%AA%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AD%98)に記したように、演算は全原子に対して
+
+<img src="https://latex.codecogs.com/png.latex?\bg_white&space;r'&space;=&space;Ar&space;&plus;&space;b">
+
+このように演算を行う。しかし私たちは`chain`に対してこの演算を行った。
+
+- 一つの原子に対してのみ演算を行うことは少ない。
+- PDBデータには座標以外にも、電荷、熱揺らぎなどが記録されている。しかし座標以外に和算・乗算を行って有意な情報を得られる量はない。
+
+以上の理由から、`Bio.PDB.Chain`の`__mul__()`と`__add__()`をオーバーライドする戦略を採った。そういうわけで実際の演算は以下に示すように非常にエレガントに行われる。(`/symmetryshift/symmetryshift/create_biological_structure_unit.py`の76行あたり参照)
+
+```python
+new_chain = chain * operator["matrix"] + operator["shift"]
+```
+
+これで演算が完了した。
+
+最後に保存する(**Save operated structure as a PDB file**)が、これは`Bio.PDB.PDBIO`の機能をそのまま利用した。
 
 ### 特長
 
@@ -91,12 +156,12 @@ symmetry shiftは受け取ったPDB IDを`Bio.PDB`を用いてPDB fileをサー�
 ### 解決出来ること
 
 - PDB idを入れればやってくれるので、今後回転対称性・並進対称性を使って新しくPDBファイルを作る作業はやらなくてよくなる。すなわち、全ての生化学分野のアカデミアンの時間を節約する。
-  - ほんとに使い勝手がいいので、布教予定。
 
 ### 今後の展望
 
-- CLIツールにする
-- package化してPYPIで配布する
+- PDBファイルは厳格なフォーマットに基づくため、chain name/idが52個しか指定できない。それ以上生成することになるときは途中まで生成して、52個よりも先は生成せず終了しているが、これはあんまりいい実装じゃない。改善したい。
+- JPHACKSがひと段落したらOSSとして整備する予定なので、ドキュメントをいい感じに英語で書きたい。
+- **コミットを整理してbiopythonにPRを送る。**
 
 ### 注力したこと（こだわり等）
 
@@ -119,25 +184,21 @@ PDBファイルから生物学的構造単位を生成、保存すること。
 
 ### 独自技術
 #### ハッカソンで開発した独自機能・技術
-* 回転・並進対称性のある結晶構造が記されたPDBファイルについて、これをPDBファイル内のヘッダーを解析して生物学的構造単位を生成・保存する技術
 
+[製品説明](https://github.com/jphacks/D_2110#%E8%A3%BD%E5%93%81%E8%AA%AC%E6%98%8E%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E8%A3%BD%E5%93%81%E3%81%AE%E8%AA%AC%E6%98%8E)で行ってしまったため、簡潔に述べる。
 
+* 回転・並進対称性のある結晶構造が記されたPDBファイルについて、これをPDBファイル内のヘッダーを解析・作用させ、生物学的構造単位を生成・保存する技術
+* 既存パッケージ`biopython`の拡張
 
-
-開発における注力ポイントと、なにをしているのかを説明する。
+開発における注力ポイントを述べる。
 
 - biopythonのシンプルさを殺さずにそれぞれの機能を小さく実装した。
-- symmetryshiftはbiopythonの機能を使うこととユーザーからのインプットを捌くインターフェースとした。
-
-以下に具体的に説明する。
-
-biopythonはバイオインフォマティクスの分野で特に活用されている、バイオインフォマ研究者向けのpythonインターフェースである。その中の`Bio.PDB`パッケージを利用・機能追加を行った。
-
-`Bio.PDB`の中で私たちが利用したのは
+- symmetryshiftは`biopython`が担うべきではない、演算を行う箇所を担当した。
+- biopythonにやりたいことを詰め込むのではなく、symmetryshiftとして実装した。
 
 #### 製品に取り入れた研究内容（データ・ソフトウェアなど）（※アカデミック部門の場合のみ提出必須）
 * Protein Data Bank
 * biopython
 
 ### 謝辞
-* We appriciate for A. Kimura to suggest this theme and teach how to read PDB files. 
+* We appriciate for A. Kimura to give an assignment and teach how to read PDB files. 

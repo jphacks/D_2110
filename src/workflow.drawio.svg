@@ -1,4 +1,4 @@
-<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="511px" height="461px" viewBox="-0.5 -0.5 511 461" content="&lt;mxfile&gt;&lt;diagram id=&quot;C2Znf4qPlTCZ-WCpQ0xi&quot; name=&quot;Page-1&quot;&gt;3VjbcpswEP0avwuEcfJYE9vNTDrN1A99VmANagTrEcKXfn1XRhhjkkxn2vjmGYN0tKDds2clDQMe5ZuZFsvsGyagBj5LNgP+MPD9YBjS1QLbGhhyB6RaJjXktcBc/gYHModWMoGyY2gQlZHLLhhjUUBsOpjQGtddswWq7qxLkUIPmMdC9dGfMjFZjd75oxb/CjLNmpm98L4eyUVj7CIpM5Hg+gDikwGPNKKpW/kmAmW5a3ipn5u+M7p3TENh/uaBoXPDbJvYIKFQXRe1yTDFQqhJi441VkUC9gWMeq3NE+KSQI/AX2DM1uVNVAYJykyu3GhpNL5ChAr1bk7O6DclF8cLqdQBHkWMhSHh/bBcpCVWOnaec6cEoVNwVkEN2ZgOHnNUzABzMHpLBhqUMHLVTa9wKkn3di2R1HBcvs2r82UlVOVe+gNiCTSDH4qcaBoXL6W9PT9QcOyRLEJFTo9fNLVS26LpyQf6R0+PtlUkdH3eEtvFjov41ar0OH3d5KwzaWBOtnZ0TbXYTcQbdDP2Ed0r0AY2H1LZjHKncFfioeuu23rZl3N2UCuN3b+Qf3dDog76og7PJer72+Z1dC5eg95iMQUTZ7bcd6sDBfp/C50xS9bnFLp3ykr3vB4v1yvJsC/JhrfTazLsaXJGTtkjFepEFsKA3Z5wQZcvBvPyavR50p3I829In6NL0ufoHX3SCVvLzcUei4IjNVJqTqjG4IbU2JDUkSM/lxy9/oF/Luxpn+ESNK2WyY53XcWm0lBPdpXbe3DS5ZP1WP1e02lziKZuNCXPSHlHG9SFrgLHpPJPJJW67eeE3djBNxk++QM=&lt;/diagram&gt;&lt;/mxfile&gt;">
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="511px" height="461px" viewBox="-0.5 -0.5 511 461" content="&lt;mxfile&gt;&lt;diagram id=&quot;C2Znf4qPlTCZ-WCpQ0xi&quot; name=&quot;Page-1&quot;&gt;3VjbcpswEP0av4tLcPJYE9vNTDrN1A99VmANagTrEcKXfn1XSARjkkxn2vjmGWPpaLF2z56VBKMgLrZzxVf5N0xBjnyWbkfB/cj3b7yIrgbYWSDybiyQKZFayOuAhfgNDmQOrUUKVc9QI0otVn0wwbKERPcwrhRu+mZLlP1ZVzyDAbBIuByiP0Wqc4ve+uMO/woiy9uZvejOjhS8NXaRVDlPcbMHBdNRECtEbVvFNgZpuGt5sffN3hl9dUxBqf/mBsd7pXdtbJBSqK6LSueYYcnltEMnCusyBfMHjHqdzSPiikCPwF+g9c7ljdcaCcp1Id1opRW+QIwSVTNnwOgzIxcnSyHlHh7HjEUR4cOwXKQV1ipxngdOCVxl4KxCC5mY9m5zVMwBC9BqRwYKJNdi3U8vdyrJXu06IqnhuHybV+fLmsva/ekPSATQDH7EC6JpUj5X5ufpnoJjD2QRSXJ68qyolZkWTU8+0Dd+fDCtMqXr047YLhsukhej0sP09ZOzyYWGBdma0Q3VYj8Rb9DN2Ed0r0Fp2H5IZTsaOIW3Je66m65eXss536uV1u5fyL+9IlGHQ1FHpxL13XXzOj4Vr+FgsZiBTnJT7s3qQIH+30JnzJD1OYXuHbPSPW/Ay+VKMhpKsuXt+JqMBpqck1PmSIUqFSXXYLYnXNLli8aiuhh9HnUn8vwr0uf4nPQ5fkefdMJWYnu2x6LwQI2UmiOqMbwiNbYk9eQYnEqO3vDAv+DmtM9wBYpWy7ThXdWJrhXYyezp/gK3+PCoSygbMPvdUmryiNo22rJ3j0la8bIyKW6eldaQaOLFvCQ43MHOdJk4ZDz4RMap271vaMb2XtoE0z8=&lt;/diagram&gt;&lt;/mxfile&gt;">
     <defs/>
     <g>
         <path d="M 105 60 L 105 93.63" fill="none" stroke="#0000ff" stroke-miterlimit="10" pointer-events="stroke"/>
@@ -90,13 +90,13 @@
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 208px; height: 1px; padding-top: 430px; margin-left: 1px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                Save operated structure as PDB file
+                                Save operated structure as a PDB file
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="105" y="434" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Save operated structure as PDB file
+                    Save operated structure as a PDB fi...
                 </text>
             </switch>
         </g>
@@ -107,13 +107,13 @@
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 208px; height: 1px; padding-top: 330px; margin-left: 1px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                Operate rotate matrix to coordinates
+                                Operate rotate matrix and translation vector to coordinates
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="105" y="334" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Operate rotate matrix to coordinates
+                    Operate rotate matrix and translati...
                 </text>
             </switch>
         </g>
