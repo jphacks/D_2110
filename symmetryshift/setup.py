@@ -1,10 +1,19 @@
-from distutils.core import setup
-
-setup(name='SymmetryShift',
-      version='1.0',
-      description='Extention of biopython.PDB for assemble asymmetric unit',
-      author='flat35hd99',
-      author_email='flat35hd99@gmail.com',
-      url='https://github.com/jphacks/D_2110',
-      packages=['symmetryshift'],
-     )
+from setuptools import setup, find_packages
+with open('requirements.txt') as requirements_file:
+      install_requirements = requirements_file.read().splitlines()
+setup(
+      name="samplecli",
+      version="0.0.1",
+      description="A small package",
+      author="karakaram",
+      packages=find_packages(),
+      install_requires=install_requirements,
+      entry_points={
+            "console_scripts": [
+                  "symmetry=symmetry.create_biological_structure_unit:main",
+            ]
+      },
+      classifiers=[
+            'Programming Language :: Python :: 3.6',
+      ]
+)
