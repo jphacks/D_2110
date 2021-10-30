@@ -2,8 +2,7 @@
 
 symmetry shift
 
-[![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2021/07/JPHACKS2021_ogp.jpg)](https://www.youtube.com/watch?v=LUPQFB4QyVo)
-
+[![IMAGE ALT TEXT HERE](src/biological_assembly.jpg)](https://youtu.be/-h38XeSu9sA)
 
 ## Quick install and use guide
 
