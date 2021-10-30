@@ -59,13 +59,13 @@ PDBファイルには単位構造のデータのみしか記載されていな�
 
 この回転行列と並進ベクトルを元の座標に作用させることにより、対称操作した後の座標が得られる。
 
-つまり、元の座標を ![CodeCogsEqn](https://user-images.githubusercontent.com/84301337/139536358-9cfc096e-b0b1-4bf8-9ae4-e865a07b445d.gif)
-、回転行列を ![CodeCogsEqn (1)](https://user-images.githubusercontent.com/84301337/139536218-1cd44639-d8a3-49cd-affe-e29d141ceb8b.gif)、並進ベクトルを ![CodeCogsEqn (2)](https://user-images.githubusercontent.com/84301337/139536293-a3f57a2c-ef29-4b95-a9fd-ae94061ddf26.gif) とすると、対称操作した後の座標 ![CodeCogsEqn (3)](https://user-images.githubusercontent.com/84301337/139536325-4c369b03-cb1a-47a0-8f7f-ad710679432f.gif)
+つまり、ある原子の元の座標を <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;r">
+、回転行列を<img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;A"> 、並進ベクトルを <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;b"> とすると、対称操作した後の原子の座標 <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;r'">
 は、次のように表すことができる。
 
-![CodeCogsEqn (4)](https://user-images.githubusercontent.com/84301337/139536374-a09c3836-ec77-4425-aff9-54d224926cbc.gif)
+<img src="https://latex.codecogs.com/png.latex?\bg_white&space;r'&space;=&space;Ar&space;&plus;&space;b">
 
-原子1つ1つに、対称操作の数だけ作用させる。
+この演算を原子1つ1つに、必要な対称操作の数だけ行う。
 
 ### 製品説明（具体的な製品の説明）
 
