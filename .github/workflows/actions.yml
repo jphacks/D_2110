@@ -18,10 +18,12 @@ jobs:
         python-version: "3.7"
     
     - name: Packaging
+      working-directory: symmetryshift
       run: python setup.py sdist
 
     - name: Publish a distribution to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
+      working-directory: symmetryshift
       with:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
