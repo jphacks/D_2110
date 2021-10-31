@@ -120,6 +120,7 @@ PDB fileにはヘッダー行と呼ばれる領域が存在しており、そこ
 biopythonはヘッダーの一部を解析する`Bio.PDB.parse_pdb_header`モジュールが存在したため、これに独立して機能を追加する方法を採った。これは一つのcommitにまとめたので、[c4aae6f71c9929f1f500e8c368482bc6c1d33d34](https://github.com/flat35hd99/biopython/commit/c4aae6f71c9929f1f500e8c368482bc6c1d33d34#diff-489f4c709ac8e95f3002171793e65a4f5339a5ab137480d278b6b50f6a4dfb76)を参照いただきたい。簡潔に述べると
 
 - 既存データストア(`pdbh_dict`)に新しく`chain_ids_to_work_symmetry_operator`と`symmetry_operator`を追加し、これに保存するようにした。
+- 一番初めの単位行列はいつも[[1,0,0],[0,1,0],[0,0,1]]なので、取得しないことにした。
 - 取得したいデータは行頭が`REMARK 350`であるため、ヒットしたときにデータをいい感じに取得してデータストアに保存するようにした。
   - 複雑なデータ型になってしまったので、コメントで補足した。
 
@@ -133,7 +134,7 @@ biopythonはヘッダーの一部を解析する`Bio.PDB.parse_pdb_header`モジ
 
 <img src="https://latex.codecogs.com/png.latex?\bg_white&space;r'&space;=&space;Ar&space;&plus;&space;b">
 
-このように演算を行う。しかし私たちは`chain`に対してこの演算を行った。
+このように演算を行う。しかし私たちは`chain`という`atom`の集団に対してこの演算を行った。
 
 - 一つの原子に対してのみ演算を行うことは少ない。
 - PDBデータには座標以外にも、電荷、熱揺らぎなどが記録されている。しかし座標以外に和算・乗算を行って有意な情報を得られる量はない。
@@ -156,6 +157,7 @@ new_chain = chain * operator["matrix"] + operator["shift"]
 ### 解決出来ること
 
 - PDB idを入れればやってくれるので、今後回転対称性・並進対称性を使って新しくPDBファイルを作る作業はやらなくてよくなる。すなわち、全ての生化学分野のアカデミアンの時間を節約する。
+- Pythonのパッケージとして`Bio.PDB.Structure`を返すことも可能なので、その後ユーザーが好きなように編集可能。
 
 ### 今後の展望
 
