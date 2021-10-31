@@ -115,7 +115,9 @@ symmetry shiftは`sys.argv`で受け取ったPDB IDを`Bio.PDB`を用いて無�
 
 次にheaderの解析(**Get matrix**)と全原子の座標を取得(**Get coordinates of Atoms**)する。全原子の座標取得については特に手を加えていないので、ここではheaderの解析について説明する。
 
-PDB fileにはヘッダー行と呼ばれる領域が存在しており、そこに決まった形式で回転行列と並進ベクトルが記述されている。(詳しくはhogehoge参照)
+PDB fileにはヘッダー行と呼ばれる領域が存在しており、そこに決まった形式で回転行列と並進ベクトルが記述されている。(詳しくは[分子生物学的な前提知識](https://github.com/jphacks/D_2110#%E5%88%86%E5%AD%90%E7%94%9F%E7%89%A9%E5%AD%A6%E7%9A%84%E3%81%AA%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AD%98) )
+
+
 
 biopythonはヘッダーの一部を解析する`Bio.PDB.parse_pdb_header`モジュールが存在したため、これに独立して機能を追加する方法を採った。これは一つのcommitにまとめたので、[c4aae6f71c9929f1f500e8c368482bc6c1d33d34](https://github.com/flat35hd99/biopython/commit/c4aae6f71c9929f1f500e8c368482bc6c1d33d34#diff-489f4c709ac8e95f3002171793e65a4f5339a5ab137480d278b6b50f6a4dfb76)を参照いただきたい。簡潔に述べると
 
