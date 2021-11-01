@@ -1,6 +1,7 @@
-baseURL = 'https://jphacks.github.io/d_2110'
+baseURL = 'https://jphacks.github.io/D_2110'
 languageCode = 'en-us'
 title = 'Symmetry shift'
+theme = "book"
 
 [params]
-  BookRepo = "https://github.com/jphacks/d_2110"
+  BookRepo = "https://github.com/jphacks/D_2110"
