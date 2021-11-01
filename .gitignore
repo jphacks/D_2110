@@ -1,3 +1,6 @@
 *.pdb
 *.ent
 .venv/
+
+# document
+docs/guide/resources/
