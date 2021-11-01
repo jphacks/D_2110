@@ -36,8 +36,8 @@ You will see success and you can find `out.pdb` file and some directories.
 
 `kz/pdb1kzu.ent` looks like:
 
-![1KZU](/installation/1KZU.png)
+![1KZU](1KZU.png)
 
 and `out.pdb` looks like:
 
-![generated biological assembly of 1KZU](/installation/1KZU_biological_assembly.png)
+![generated biological assembly of 1KZU](1KZU_biological_assembly.png)
