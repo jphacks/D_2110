@@ -1,3 +1,6 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://jphacks.github.io/d_2110'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Symmetry shift'
+
+[params]
+  BookRepo = "https://github.com/jphacks/d_2110"
