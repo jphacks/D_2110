@@ -21,8 +21,8 @@ jobs:
           extended: true
 
       - name: Build
-        run: hugo --minify -d dist
-        working-directory: docs/
+        run: hugo --minify -d ../dist
+        working-directory: docs/guide/
 
       - name: Deploy to Github Pages
         uses: peaceiris/actions-gh-pages@v3
