@@ -5,3 +5,9 @@ theme = "book"
 
 [params]
   BookRepo = "https://github.com/jphacks/D_2110/"
+
+[menu]
+[[menu.after]]
+  name = "Github"
+  url = "https://github.com/jphacks/D_2110/"
+  weight = 90
