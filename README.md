@@ -79,11 +79,11 @@ PDBファイルには単位構造のデータのみしか記載されていな�
 
 この回転行列と並進ベクトルを元の座標に作用させることにより、対称操作した後の座標が得られる。
 
-つまり、ある原子の元の座標を <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;r">
-、回転行列を<img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;A"> 、並進ベクトルを <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;b"> とすると、対称操作した後の原子の座標 <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;r'">
+つまり、ある原子の元の座標を <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;\vec{r}">
+、回転行列を<img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;A"> 、並進ベクトルを <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;\vec{b}"> とすると、対称操作した後の原子の座標 <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;\vec{r'}">
 は、次のように表すことができる。
 
-<img src="https://latex.codecogs.com/png.latex?\bg_white&space;r'&space;=&space;Ar&space;&plus;&space;b">
+<img src="https://latex.codecogs.com/png.latex?\bg_white&space;\vec{r'}&space;=&space;A\vec{r}&space;&plus;&space;\vec{b}">
 
 この演算を原子1つ1つに、必要な対称操作の数だけ行う。
 
@@ -134,7 +134,7 @@ biopythonはヘッダーの一部を解析する`Bio.PDB.parse_pdb_header`モジ
 
 ここに一つ工夫ポイントがある。[分子生物学的な前提知識](https://github.com/jphacks/D_2110#%E5%88%86%E5%AD%90%E7%94%9F%E7%89%A9%E5%AD%A6%E7%9A%84%E3%81%AA%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AD%98)に記したように、演算は全原子に対して
 
-<img src="https://latex.codecogs.com/png.latex?\bg_white&space;r'&space;=&space;Ar&space;&plus;&space;b">
+<img src="https://latex.codecogs.com/png.latex?\bg_white&space;\vec{r'}&space;=&space;A\vec{r}&space;&plus;&space;\vec{b}">
 
 このように演算を行う。しかし私たちは`chain`という`atom`の集団に対してこの演算を行った。
 
