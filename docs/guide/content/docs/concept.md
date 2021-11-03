@@ -23,10 +23,9 @@ The green box indicates that the rotation matrix part is a unit matrix and the t
 
 By applying this rotation matrix and translation vector to the coordinates in the PDB file, we can obtain the coordinates after symmetry operations.
 
-In other words, we assume that the original coordinate of an atom is <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;\vec{r}">
-, the rotation matrix is <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;A">, and the translation vector is <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;\vec{b}"> . The coordinate after symmetry operations <img src="https://latex.codecogs.com/png.latex?\inline&space;\bg_white&space;\vec{r'}">
+In other words, we assume that the original coordinate of an atom is $\vec{r}$, the rotation matrix is $A$, and the translation vector is $\vec{b}$ . The coordinate after symmetry operations $\vec{r'}$
 is expressed
 
-<img src="https://latex.codecogs.com/png.latex?\bg_white&space;\vec{r'}&space;=&space;A\vec{r}&space;&plus;&space;\vec{b}">
+$$\vec{r'}=A\vec{r}+\vec{b}$$
 
 We perform this operation on each atom, for as many symmetric operations as we need.
