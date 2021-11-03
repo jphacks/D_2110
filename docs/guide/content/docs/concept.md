@@ -23,9 +23,11 @@ The green box indicates that the rotation matrix part is a unit matrix and the t
 
 By applying this rotation matrix and translation vector to the coordinates in the PDB file, we can obtain the coordinates after symmetry operations.
 
-In other words, we assume that the original coordinate of an atom is $\vec{r}$, the rotation matrix is $A$, and the translation vector is $\vec{b}$ . The coordinate after symmetry operations $\vec{r'}$
+In other words, we assume that the original coordinate of an atom is {{< katex >}}\vec{r}{{< /katex >}}, the rotation matrix is {{< katex >}}A{{< /katex >}}, and the translation vector is {{< katex >}}\vec{b}{{< /katex >}} . The coordinate after symmetry operations {{< katex >}}\vec{r'}{{< /katex >}}
 is expressed
 
-$$\vec{r'}=A\vec{r}+\vec{b}$$
+{{< katex display >}}
+\vec{r'}=A\vec{r}+\vec{b}
+{{< /katex >}}
 
 We perform this operation on each atom, for as many symmetric operations as we need.
