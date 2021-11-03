@@ -3,6 +3,9 @@ weight: 30
 ---
 
 # Concept of Symmetry shift
+
+## Background
+
 The PDB (Protein Data Bank) file contains the coordinates of all atoms in the unit structure, as shown below. The boxed area shows the x-, y-, and z-coordinates of the atoms, from left to right.
 
 ![pdb_coord](https://user-images.githubusercontent.com/84301337/139531746-ee44b003-c757-45d6-8399-9bde1ea79c4c.jpg)
@@ -31,3 +34,41 @@ is expressed
 {{< /katex >}}
 
 We perform this operation on each atom, for as many symmetric operations as we need.
+
+## Workflow
+
+This product automates this process of rotation and translation for almost all PDB files.
+
+Here is a concrete explanation. The following diagram is the workflow of symmetry shift. The red color indicates the part that we developed or added functions. The yellow-green (greenish) parts are the functions that the Bio.
+
+![Workflow of symmetry shift](workflow.drawio.svg)
+
+The user specifies the PDB ID from which he or she wants to retrieve the biological assembly, either in the CLI or as an argument to the Python package. There is no further input from the user. Everything is done within symmetry shift.
+
+```sh
+symmetry 5V8K # PDB ID is 5V8K
+```
+
+as a package:
+
+```python
+from symmetryshift.create_biological_structure_unit import create, save
+
+pdb_id = "5V8K"
+new_structure = create(pdb_id)
+save(new_structure)
+```
+
+symmetry shift gets a PDB file from a free public data server using `Bio.PDB`(**Recieve PDB ID**)
+
+The next step is to analyze the header (**Get matrix**) and get the coordinates of all atoms (**Get coordinates of Atoms**). Symmetry shift use `PDB.PDBParser` and `PDB.parse_pdb_header`, respectively.
+
+The PDB file contains a header row, where the rotation matrix and translation vector are described in a fixed format.(See Background for details.)
+
+Once we get matrix and vector, Symmetry shift work operators:
+
+```python
+new_chain = chain * operator["matrix"] + operator["shift"]
+```
+
+Finnaly, Symmetry shift save new PDB file.
