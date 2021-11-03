@@ -1,0 +1,129 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="511px" height="461px" viewBox="-0.5 -0.5 511 461" content="&lt;mxfile&gt;&lt;diagram id=&quot;C2Znf4qPlTCZ-WCpQ0xi&quot; name=&quot;Page-1&quot;&gt;3VjbcpswEP0av4tLcPJYE9vNTDrN1A99VmANagTrEcKXfn1XSARjkkxn2vjmGWPpaLF2z56VBKMgLrZzxVf5N0xBjnyWbkfB/cj3b7yIrgbYWSDybiyQKZFayOuAhfgNDmQOrUUKVc9QI0otVn0wwbKERPcwrhRu+mZLlP1ZVzyDAbBIuByiP0Wqc4ve+uMO/woiy9uZvejOjhS8NXaRVDlPcbMHBdNRECtEbVvFNgZpuGt5sffN3hl9dUxBqf/mBsd7pXdtbJBSqK6LSueYYcnltEMnCusyBfMHjHqdzSPiikCPwF+g9c7ljdcaCcp1Id1opRW+QIwSVTNnwOgzIxcnSyHlHh7HjEUR4cOwXKQV1ipxngdOCVxl4KxCC5mY9m5zVMwBC9BqRwYKJNdi3U8vdyrJXu06IqnhuHybV+fLmsva/ekPSATQDH7EC6JpUj5X5ufpnoJjD2QRSXJ68qyolZkWTU8+0Dd+fDCtMqXr047YLhsukhej0sP09ZOzyYWGBdma0Q3VYj8Rb9DN2Ed0r0Fp2H5IZTsaOIW3Je66m65eXss536uV1u5fyL+9IlGHQ1FHpxL13XXzOj4Vr+FgsZiBTnJT7s3qQIH+30JnzJD1OYXuHbPSPW/Ay+VKMhpKsuXt+JqMBpqck1PmSIUqFSXXYLYnXNLli8aiuhh9HnUn8vwr0uf4nPQ5fkefdMJWYnu2x6LwQI2UmiOqMbwiNbYk9eQYnEqO3vDAv+DmtM9wBYpWy7ThXdWJrhXYyezp/gK3+PCoSygbMPvdUmryiNo22rJ3j0la8bIyKW6eldaQaOLFvCQ43MHOdJk4ZDz4RMap271vaMb2XtoE0z8=&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <path d="M 105 60 L 105 93.63" fill="none" stroke="#0000ff" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 105 98.88 L 101.5 91.88 L 105 93.63 L 108.5 91.88 Z" fill="#0000ff" stroke="#0000ff" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="0" y="0" width="210" height="60" fill="#cc0000" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 208px; height: 1px; padding-top: 30px; margin-left: 1px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                Recieve PDB ID
+                                <br/>
+                                as a CLI and Python package
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="105" y="34" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Recieve PDB ID...
+                </text>
+            </switch>
+        </g>
+        <path d="M 105 160 L 105 193.63" fill="none" stroke="#0000ff" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 105 198.88 L 101.5 191.88 L 105 193.63 L 108.5 191.88 Z" fill="#0000ff" stroke="#0000ff" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 210 130 L 405 130 L 405 233.63" fill="none" stroke="#0000ff" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 405 238.88 L 401.5 231.88 L 405 233.63 L 408.5 231.88 Z" fill="#0000ff" stroke="#0000ff" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="0" y="100" width="210" height="60" fill="#00cc00" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 208px; height: 1px; padding-top: 130px; margin-left: 1px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                Fetch PDB file
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="105" y="134" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Fetch PDB file
+                </text>
+            </switch>
+        </g>
+        <path d="M 105 260 L 105 293.63" fill="none" stroke="#0000ff" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 105 298.88 L 101.5 291.88 L 105 293.63 L 108.5 291.88 Z" fill="#0000ff" stroke="#0000ff" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="0" y="200" width="210" height="60" fill="#00cc00" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 208px; height: 1px; padding-top: 230px; margin-left: 1px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                Get coordinates of Atoms
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="105" y="234" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Get coordinates of Atoms
+                </text>
+            </switch>
+        </g>
+        <path d="M 300 270 L 255 270 L 255 330 L 216.37 330" fill="none" stroke="#0000ff" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 211.12 330 L 218.12 326.5 L 216.37 330 L 218.12 333.5 Z" fill="#0000ff" stroke="#0000ff" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="300" y="240" width="210" height="60" fill="#cc0000" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 208px; height: 1px; padding-top: 270px; margin-left: 301px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                Get matrix
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="405" y="274" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Get matrix
+                </text>
+            </switch>
+        </g>
+        <path d="M 105 360 L 105 393.63" fill="none" stroke="#0000ff" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 105 398.88 L 101.5 391.88 L 105 393.63 L 108.5 391.88 Z" fill="#0000ff" stroke="#0000ff" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="0" y="400" width="210" height="60" fill="#00cc00" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 208px; height: 1px; padding-top: 430px; margin-left: 1px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                Save operated structure as a PDB file
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="105" y="434" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Save operated structure as a PDB fi...
+                </text>
+            </switch>
+        </g>
+        <rect x="0" y="300" width="210" height="60" fill="#cc0000" stroke="#000000" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 208px; height: 1px; padding-top: 330px; margin-left: 1px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                Operate rotate matrix and translation vector to coordinates
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="105" y="334" fill="#000000" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Operate rotate matrix and translati...
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>
