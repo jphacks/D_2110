@@ -8,7 +8,7 @@ setup(
       packages=find_packages(),
       entry_points={
             "console_scripts": [
-                  "symmetry=symmetryshift.create_biological_structure_unit:main",
+                  "symmetry=symmetryshift.cli:cli",
             ]
       },
       classifiers=[
