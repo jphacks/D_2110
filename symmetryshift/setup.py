@@ -4,6 +4,7 @@ import versioneer
 setup(
       name="symmetryshift",
       version=versioneer.get_version(),
+      cmdclass=versioneer.get_cmdclass(),
       description="Create biological strucre unit from single PDB file",
       author="flat35hd99",
       packages=find_packages(),
