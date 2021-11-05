@@ -22,7 +22,9 @@ jobs:
     
     - name: Packaging
       working-directory: symmetryshift
-      run: python setup.py sdist
+      run: |
+        cp README.md symmetryshift/
+        python setup.py bdist_wheel
 
     - name: Publish a distribution to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
