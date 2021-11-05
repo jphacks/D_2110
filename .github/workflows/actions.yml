@@ -17,6 +17,9 @@ jobs:
       with:
         python-version: "3.7"
     
+    - name: Install packaging dependencies
+      run: pip install versioneer
+    
     - name: Packaging
       working-directory: symmetryshift
       run: python setup.py sdist
