@@ -1,6 +1,7 @@
 *.pdb
 *.ent
 .venv/
+**/__pycache__/
 
 # document
 docs/guide/resources/
