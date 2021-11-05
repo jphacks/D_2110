@@ -1,8 +1,9 @@
 from setuptools import setup, find_packages
+import versioneer
 
 setup(
       name="symmetryshift",
-      version="0.1.0",
+      version=versioneer.get_version(),
       description="Create biological strucre unit from single PDB file",
       author="flat35hd99",
       packages=find_packages(),
