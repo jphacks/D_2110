@@ -1,8 +1,10 @@
-import unittest, os, sys
+import tempfile, shutil
+import unittest, os, sys, filecmp
 sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
 from symmetryshift.create_biological_structure_unit import (
     operator
 )
+from symmetryshift.cli import cli
 from Bio.PDB import PDBParser, parse_pdb_header
 
 class TestCore (unittest.TestCase):
@@ -21,7 +23,19 @@ class TestCore (unittest.TestCase):
         assert(reference_structure, created_structure)
 
 class TestCli (unittest.TestCase):
-    def test_only_pdb_code(self):
-        pass
+    def setUp(self) -> None:
+        self.tmp_dir = tempfile.mkdtemp()
+        self.output_filename = os.path.join(self.tmp_dir, "tmp.pdb")
+        self.pdb_code = "1KZU"
+        self.rotated_filename = "{}/assets/{}.pdb_rotated".format(os.path.dirname(os.path.abspath(__file__)), self.pdb_code)
+        self.original_filename = "{}/assets/{}.pdb_original".format(os.path.dirname(os.path.abspath(__file__)), self.pdb_code)
+        return super().setUp()
+    def tearDown(self) -> None:
+        shutil.rmtree(self.tmp_dir)
+        return super().tearDown()
+    def test_pdb_code_and_outputfile(self):
+        cli([self.pdb_code, "--output", self.output_filename])
+        self.assertTrue(filecmp.cmp(self.rotated_filename, self.output_filename))
     def test_from_file(self):
-        pass
+        cli(["--from-file", self.original_filename, "--output", self.output_filename])
+        self.assertTrue(filecmp.cmp(self.rotated_filename, self.output_filename))
