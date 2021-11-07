@@ -25,4 +25,3 @@ class TestCli (unittest.TestCase):
         pass
     def test_from_file(self):
         pass
-    def test_from_
