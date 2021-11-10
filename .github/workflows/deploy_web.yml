@@ -24,5 +24,3 @@ jobs:
           --trigger-http \
           --runtime python39 \
           --allow-unauthenticated
-
-    - name: 
