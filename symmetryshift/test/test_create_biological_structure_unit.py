@@ -1,5 +1,6 @@
 import tempfile, shutil
 import unittest, os, sys, filecmp
+from unittest.mock import patch
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 from symmetryshift.create_biological_structure_unit import operator
@@ -46,7 +47,8 @@ class TestCli(unittest.TestCase):
         shutil.rmtree(self.tmp_dir)
         return super().tearDown()
 
-    def test_pdb_code_and_outputfile(self):
+    @patch("builtins.input", return_value="y")
+    def test_pdb_code_and_outputfile(self, mock_input):
         cli([self.pdb_code, "--output", self.output_filename])
         self.assertTrue(filecmp.cmp(self.rotated_filename, self.output_filename))
 

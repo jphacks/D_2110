@@ -1,3 +1,4 @@
+import os
 import sys
 
 # If you want to use in jphacks/D_2110 repository, refer Quick install guide on README file
@@ -29,7 +30,8 @@ def save_structure(structure: Structure, output="out.pdb"):
 def get_structure_and_header_from_pdb_code(pdb_code: str):
     # Fetch PDB file
     pdb = PDBList()
-    pdb_file = pdb.retrieve_pdb_file(pdb_code, file_format="pdb")
+    pdb_file = pdb.retrieve_pdb_file(pdb_code, pdir=pdb_code, file_format="pdb")
+    os.rmdir('obsolete')
     parser = PDBParser(QUIET=True)
     structure = parser.get_structure(pdb_code, pdb_file)
     header = parse_pdb_header(pdb_file)

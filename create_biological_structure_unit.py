@@ -1,10 +1,10 @@
-import os, sys
+import os, sys,shutil
 sys.path.append(os.path.join(os.path.dirname(__file__), 'biopython'))
 from Bio.PDB import PDBParser, PDBList, PDBIO, parse_pdb_header
 
 pdb_code="1KZU"
 pdb = PDBList()
-pdb_filename = pdb.retrieve_pdb_file(pdb_code, file_format="pdb")
+pdb_filename = pdb.retrieve_pdb_file(pdb_code, pdir=pdb_code, file_format="pdb")
 dictionary = parse_pdb_header(pdb_filename)
 
 parser = PDBParser(QUIET=True)
@@ -34,3 +34,13 @@ structure.add(model)
 io = PDBIO()
 io.set_structure(structure)
 io.save("out.pdb")
+os.rmdir('obsolete')
+while(True):
+    y_or_n = input("Do you remove the original pdb file ? (y/n)")
+    if(y_or_n == "y"):
+        shutil.rmtree(pdb_code)
+        break
+    elif(y_or_n == "n"):
+        break
+    else:
+        continue
