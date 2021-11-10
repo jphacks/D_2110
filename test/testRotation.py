@@ -1,8 +1,8 @@
-import biopython
-import symmetryshift
+# import biopython
+# import symmetryshift
 
-def main():
-    print("do something here")
+# def main():
+#     print("do something here")
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
