@@ -31,7 +31,7 @@ def get_structure_and_header_from_pdb_code(pdb_code: str):
     # Fetch PDB file
     pdb = PDBList()
     pdb_file = pdb.retrieve_pdb_file(pdb_code, pdir=pdb_code, file_format="pdb")
-    os.rmdir('obsolete')
+    os.rmdir("obsolete")
     parser = PDBParser(QUIET=True)
     structure = parser.get_structure(pdb_code, pdb_file)
     header = parse_pdb_header(pdb_file)
@@ -45,7 +45,7 @@ def get_structure_and_header_from_pdb_file(pdb_file):
     return structure, header
 
 
-def get_biological_assembly_from_pdb_code(pdb_code):
+def get_biological_assembly_from_pdb_code(pdb_code, work_dir=os.getcwd()):
     structure, header = get_structure_and_header_from_pdb_code(pdb_code=pdb_code)
     return operator(structure=structure, header=header)
 

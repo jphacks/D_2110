@@ -1,4 +1,4 @@
-import argparse, sys,shutil
+import argparse, sys, shutil
 from symmetryshift.create_biological_structure_unit import (
     get_biological_assembly_from_pdb_code,
     get_biological_assembly_from_pdb_file,
@@ -21,12 +21,12 @@ def cli(args):
         structure = get_biological_assembly_from_pdb_file(args["PDB object"])
     else:
         structure = get_biological_assembly_from_pdb_code(args["PDB object"])
-        while(True):
-            y_or_n = input("Do you remove the original pdb file ? (y/n)")
-            if(y_or_n == "y"):
+        while True:
+            y_or_n = input("Do you want to remove the original pdb file ? (y/n)")
+            if y_or_n == "y":
                 shutil.rmtree(args["PDB object"])
                 break
-            elif(y_or_n == "n"):
+            elif y_or_n == "n":
                 break
             else:
                 continue
