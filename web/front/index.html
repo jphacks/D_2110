@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Untitled</title>
+    <meta name="description" content="This is an example of a meta description.">
+    <link rel="stylesheet" href="css/LiteMol-plugin.css" type="text/css" />
+    <script src="js/LiteMol-plugin.min.js"></script>
+
+  </head>
+  <body>
+		<div id="litemol1" style="width: 640px; height: 480px; margin-top: 200px; position: relative"></div>
+    <div id="litemol2" style="width: 640px; height: 480px; margin-top: 200px; position: relative"></div>
+    <script>
+      var plugin1 = LiteMol.Plugin.create({ target: '#litemol1' });
+      plugin1.loadMolecule({
+        id: '1tqn',
+        url: 'https://www.ebi.ac.uk/pdbe/static/entry/1tqn_updated.cif',
+        format: 'cif' // default
+      }).then(() => {
+        console.log("Molecule loaded")
+      }).catch(e => {
+        console.log("hoge")
+        console.error(e)
+      });
+
+      var plugin2 = LiteMol.Plugin.create({ target: '#litemol2' });
+      plugin2.loadMolecule({
+        id: '5v8k',
+        url: 'https://www.ebi.ac.uk/pdbe/static/entry/1tqn_updated.cif',
+        format: 'cif' // default
+      }).then(() => {
+        console.log("Molecule loaded")
+      }).catch(e => {
+        console.log("hoge")
+        console.error(e)
+      });
+    </script>
+  </body>
+</html>
