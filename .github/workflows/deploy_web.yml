@@ -17,7 +17,6 @@ jobs:
           export_default_credentials: true
 
       - name: Deploy function
-        id: function
         uses: google-github-actions/deploy-cloud-functions@main
         working-directory: ./web/functions
         with:
