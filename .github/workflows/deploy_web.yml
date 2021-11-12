@@ -23,4 +23,4 @@ jobs:
           runtime: python39
           source_dir: ./web/functions
           env_vars_file: ./web/functions/.env.yaml
-          ingress_settings: all
+          ingress_settings: ALLOW_ALL
