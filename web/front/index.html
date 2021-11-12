@@ -57,13 +57,20 @@
         const pdb_code = $('pdb_code').val()
         const rcsb_url = `https://files.rcsb.org/download/${pdb_code}.pdb`
         if ($("input").first().val().length === 4) {
-          load_structure(plugin2, pdb_code, rcsb_url)
-          $.post(api_url, {pdb_code: pdb_code})
-            .done(response => {
-              assembled_url = response.download_url
-              load_structure(plugin1, pdb_code, assembled_url)
-            }, "json")
           $("#result").text("Assembling now...").show()
+          load_structure(plugin2, pdb_code, rcsb_url)
+          $.ajax({
+            url: api_url,
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify({pdb_code}),
+            success: function (data, textStatus, jQxhr) {
+              load_structure(plugin1, pdb_code, data.download_url)
+              $("#result").text("Done").show()
+            }
+          })
+          
         } else {
           $("#result").text("PDB code must be 4 char.").show()
         }

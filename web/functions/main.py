@@ -32,7 +32,7 @@ def fetch_biological_assembly(request):
     if request.method == "OPTIONS":
         headers = {
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET",
+            "Access-Control-Allow-Methods": "POST",
             "Access-Control-Allow-Headers": "Authorization",
             "Access-Control-Max-Age": "3600",
             "Access-Control-Allow-Credentials": "true",
