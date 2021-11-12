@@ -29,19 +29,12 @@ def upload_assembly(filename, pdb_code):
 
 def fetch_biological_assembly(request):
     # CORS enable
-    if request.method == "OPTIONS":
-        headers = {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "POST",
-            "Access-Control-Allow-Headers": "Authorization",
-            "Access-Control-Max-Age": "3600",
-            "Access-Control-Allow-Credentials": "true",
-        }
-        return ("", 204, headers)
     headers = {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "POST",
     }
+    if request.method == "OPTIONS":
+        return ("", 204, headers)
 
     data = request.get_json()
     tmp_dir = tempfile.mkdtemp()
