@@ -20,6 +20,7 @@ jobs:
     - id: function
       working-directory: web/function/
       uses: google-github-actions/deploy-cloud-functions@main
+      with:
         name: fetch_biological_assembly
         runtime: python39
         env_vars_file: .env.yaml
