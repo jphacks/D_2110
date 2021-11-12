@@ -17,10 +17,11 @@ jobs:
         export_default_credentials: true
 
     - name: Deploy function
+    - id: function
       working-directory: web/function/
-      run: | 
-        gcloud functions deploy fetch_biological_assembly \
-          --env-vars-file .env.yaml \
-          --trigger-http \
-          --runtime python39 \
-          --allow-unauthenticated
+      uses: google-github-actions/deploy-cloud-functions@main
+        name: fetch_biological_assembly
+        runtime: python39
+        env_vars_file: .env.yaml
+        event_trigger_type: http
+        ingress_settings: all

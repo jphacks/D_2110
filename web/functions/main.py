@@ -28,6 +28,21 @@ def upload_assembly(filename, pdb_code):
 
 
 def fetch_biological_assembly(request):
+    # CORS enable
+    if request.method == "OPTIONS":
+        headers = {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET",
+            "Access-Control-Allow-Headers": "Authorization",
+            "Access-Control-Max-Age": "3600",
+            "Access-Control-Allow-Credentials": "true",
+        }
+        return ("", 204, headers)
+    headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+    }
+
     data = request.get_json()
     tmp_dir = tempfile.mkdtemp()
     os.chdir(tmp_dir)
@@ -41,7 +56,7 @@ def fetch_biological_assembly(request):
         return jsonify(data)
     except ValueError as err:
         logging.error(err)
-        return jsonify({"message": str(err)}), 500
+        return jsonify({"message": str(err)}), 500, headers
     except Exception as err:
         logging.error(err)
-        return jsonify({"message": "Unexpected error occur"}), 500
+        return jsonify({"message": "Unexpected error occur"}), 500, headers
