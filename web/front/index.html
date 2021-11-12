@@ -6,35 +6,79 @@
     <meta name="description" content="This is an example of a meta description.">
     <link rel="stylesheet" href="css/LiteMol-plugin.css" type="text/css" />
     <script src="js/LiteMol-plugin.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   </head>
   <body>
-		<div id="litemol1" style="width: 640px; height: 480px; margin-top: 200px; position: relative"></div>
-    <div id="litemol2" style="width: 640px; height: 480px; margin-top: 200px; position: relative"></div>
+    <form>
+      <div>
+        <input type="text" name="pdb_code" id="pdb_code">
+        <input type="submit" id="submit_button">
+        <p id="result"></p>
+      </div>
+    </form>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>PDB code</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>5V8K</td>
+            <td>二量体</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+		<div id="litemol_before" style="width: 640px; height: 480px; margin-top: 200px; position: relative"></div>
+    <div id="litemol_after" style="width: 640px; height: 480px; margin-top: 200px; position: relative"></div>
     <script>
-      var plugin1 = LiteMol.Plugin.create({ target: '#litemol1' });
-      plugin1.loadMolecule({
-        id: '1tqn',
-        url: 'https://www.ebi.ac.uk/pdbe/static/entry/1tqn_updated.cif',
-        format: 'cif' // default
-      }).then(() => {
-        console.log("Molecule loaded")
-      }).catch(e => {
-        console.log("hoge")
-        console.error(e)
-      });
+      function load_structure(plugin, pdb_code, url) {
+        plugin.loadMolecule({
+          id: pdb_code,
+          url: 'https://www.ebi.ac.uk/pdbe/entry-files/download/pdb5v8k.ent',
+          format: 'pdb'
+        }).then(() => {
+          console.log('Molecule loaded')
+        }).catch(error => {
+          console.error(error)
+        })
+      } 
 
-      var plugin2 = LiteMol.Plugin.create({ target: '#litemol2' });
+      var plugin1 = LiteMol.Plugin.create({ target: '#litemol_before' });
+      var plugin2 = LiteMol.Plugin.create({ target: '#litemol_after' });
+
+      $("#submit_button").click( event => {
+        event.preventDefault()
+        const pdb_code = $('pdb_code').val()
+        const rcsb_url = `https://files.rcsb.org/download/${pdb_code}.pdb`
+        if ($("input").first().val().length === 4) {
+          load_structure(plugin1, pdb_code, rcsb_url)
+          // fetch
+          $("#result").text("Assembling now...").show()
+        } else {
+          $("#result").text("PDB code must be 4 char.").show()
+        }
+        return true;
+      })
+
+
+
       plugin2.loadMolecule({
         id: '5v8k',
         url: 'https://www.ebi.ac.uk/pdbe/static/entry/1tqn_updated.cif',
-        format: 'cif' // default
+        format: 'cif'
       }).then(() => {
         console.log("Molecule loaded")
       }).catch(e => {
         console.log("hoge")
         console.error(e)
       });
+      //$(document).ready(() => {
+      //  $("#submit_button").click(submit)
+      //})
     </script>
   </body>
 </html>
