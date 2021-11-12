@@ -32,6 +32,7 @@ def fetch_biological_assembly(request):
     headers = {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
     }
     if request.method == "OPTIONS":
         return ("", 204, headers)
