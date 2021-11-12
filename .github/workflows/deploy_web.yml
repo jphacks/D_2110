@@ -22,5 +22,5 @@ jobs:
           name: fetch_biological_assembly
           runtime: python39
           source_dir: ./web/functions
-          env_vars_file: .env.yaml
+          env_vars_file: ./web/functions/.env.yaml
           ingress_settings: all
