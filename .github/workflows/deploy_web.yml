@@ -18,10 +18,10 @@ jobs:
 
       - name: Deploy function
         uses: google-github-actions/deploy-cloud-functions@main
-        working-directory: ./web/functions
         with:
           name: fetch_biological_assembly
           runtime: python39
+          source_dir: ./web/functions
           env_vars_file: .env.yaml
           event_trigger_type: http
           ingress_settings: all
