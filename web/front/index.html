@@ -47,38 +47,28 @@
         })
       } 
 
-      var plugin1 = LiteMol.Plugin.create({ target: '#litemol_before' });
-      var plugin2 = LiteMol.Plugin.create({ target: '#litemol_after' });
+      const plugin1 = LiteMol.Plugin.create({ target: '#litemol_before' });
+      const plugin2 = LiteMol.Plugin.create({ target: '#litemol_after' });
+
+      const api_url = 'https://us-central1-jphack-d-2110.cloudfunctions.net/fetch_biological_assembly'
 
       $("#submit_button").click( event => {
         event.preventDefault()
         const pdb_code = $('pdb_code').val()
         const rcsb_url = `https://files.rcsb.org/download/${pdb_code}.pdb`
         if ($("input").first().val().length === 4) {
-          load_structure(plugin1, pdb_code, rcsb_url)
-          // fetch
+          load_structure(plugin2, pdb_code, rcsb_url)
+          $.post(api_url, {pdb_code: pdb_code})
+            .done(response => {
+              assembled_url = response.download_url
+              load_structure(plugin1, pdb_code, assembled_url)
+            }, "json")
           $("#result").text("Assembling now...").show()
         } else {
           $("#result").text("PDB code must be 4 char.").show()
         }
         return true;
       })
-
-
-
-      plugin2.loadMolecule({
-        id: '5v8k',
-        url: 'https://www.ebi.ac.uk/pdbe/static/entry/1tqn_updated.cif',
-        format: 'cif'
-      }).then(() => {
-        console.log("Molecule loaded")
-      }).catch(e => {
-        console.log("hoge")
-        console.error(e)
-      });
-      //$(document).ready(() => {
-      //  $("#submit_button").click(submit)
-      //})
     </script>
   </body>
 </html>

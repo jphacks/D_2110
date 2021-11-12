@@ -53,7 +53,7 @@ def fetch_biological_assembly(request):
         filename = create_assembly(pdb_code, tmp_dir)
         download_url = upload_assembly(filename, pdb_code)
         data = {"message": "ok", "download_url": download_url}
-        return jsonify(data)
+        return jsonify(data), 200, headers
     except ValueError as err:
         logging.error(err)
         return jsonify({"message": str(err)}), 500, headers
