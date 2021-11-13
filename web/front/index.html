@@ -40,34 +40,42 @@
   <div class="container-fluid">
     <div class="row">
       <h1>生物学的構造単位生成器</h1>
+      <p>Demo page</p>
     </div>
     <div class="row">
-      <form class="col">
-        <div>
-          <div class="form-floating">
+      <form class="col-12 col-md-6">
+        <div class="row justify-content-between gap-1">
+          <div class="col-12 form-floating">
             <input type="text" name="pdb_code" id="pdb_code" placeholder="1FHA" class="form-control">
             <label for="pdb_code">PDB code</label>
           </div>
-          <div>
-            <button type="submit" id="submit_button" class="btn btn-primary mb-3">Submit</button>
-          </div>
-          <div>
+          <div class="col-8">
             <p id="result"></p>
+          </div>
+          <div class="col-3" style="text-align: right">
+            <button type="submit" id="submit_button" class="btn btn-primary pa-2">Submit</button>
           </div>
         </div>
       </form>
-      <div class="col">
+      <div class="col-12 col-md-6">
         <table class="table table-sm">
           <thead>
             <tr>
               <th scope="col">PDB code</th>
+              <th scope="col">Symmetry</th>
               <th scope="col">Description</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>5V8K</td>
-              <td>二量体</td>
+              <td>2</td>
+              <td>Photosynthesise Protein</td>
+            </tr>
+            <tr>
+              <td>1FHA</td>
+              <td>24</td>
+              <td>Feritin</td>
             </tr>
           </tbody>
         </table>
@@ -85,6 +93,7 @@
         url,
         format: 'pdb'
       }).then(() => {
+        $("#result").text("Assembled successfully !").removeClass().addClass("alert alert-success").show()
         console.log(`Molecule loaded from: ${url}`)
       }).catch(error => {
         console.error(error)
@@ -100,7 +109,7 @@
       event.preventDefault()
       const pdb_code = $('#pdb_code').val().toLowerCase()
       if ($("input").first().val().length === 4) {
-        $("#result").text("Assembling now. This takes about 10 seconds.").show()
+        $("#result").text("Assembling now. This takes about 10 seconds.").removeClass().addClass("alert alert-primary").show()
         plugin1.clear()
         plugin2.clear()
         $.ajax({
@@ -112,16 +121,16 @@
           success: function (data, textStatus, jQxhr) {
             load_structure(plugin1, pdb_code, data.original_url)
             load_structure(plugin2, pdb_code, data.assembly_url)
-            $("#result").text("Done").show()
+            $("#result").text("Assembled. Now loading").removeClass().addClass("alert alert-light").show()
           },
           fail: function (jqXHR, textStatus, errorThrown) {
-            $("#result").text("Request fail").show()
+            $("#result").text("Request fail").removeClass().addClass("alert alert-danger").show()
             console.error(`Status is: ${textStatus}. Error message is: ${errorThrown}`)
-          }
+          },
         })
 
       } else {
-        $("#result").text("PDB code must be 4 char.").show()
+        $("#result").text("PDB code must be 4 char.").removeClass().addClass("alert alert-danger").show()
       }
       return true;
     })
