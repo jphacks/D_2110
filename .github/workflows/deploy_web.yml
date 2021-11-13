@@ -28,7 +28,7 @@ jobs:
           source_dir: ./web/functions
           env_vars_file: ./web/functions/.env.yaml
           ingress_settings: ALLOW_ALL
-          region: us-west1
+          region: us-west2
 
   deploy-page:
     runs-on: ubuntu-18.04
