@@ -1,6 +1,7 @@
 name: Deploy web sample
 
 on:
+  workflow_dispatch
   push:
     branches:
       - master
@@ -27,6 +28,7 @@ jobs:
           source_dir: ./web/functions
           env_vars_file: ./web/functions/.env.yaml
           ingress_settings: ALLOW_ALL
+          region: us-west1
 
   deploy-page:
     runs-on: ubuntu-18.04
