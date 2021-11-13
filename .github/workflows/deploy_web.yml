@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build-and-deploy:
+  deploy-functions:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
@@ -27,3 +27,23 @@ jobs:
           source_dir: ./web/functions
           env_vars_file: ./web/functions/.env.yaml
           ingress_settings: ALLOW_ALL
+
+  deploy-page:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.17.3'
+      
+      - name: install firebase-tools
+        run: npm install firebase-tools
+      
+      - name: deploy page
+        working-directory: web/
+        run: firebase deploy --only hosting --token $FIREBASE_CI_TOKEN
+        env:
+          FIREBASE_CI_TOKEN: ${{ secrets.FIREBASE_CI_TOKEN }}
