@@ -1,7 +1,7 @@
 import os
-import sys
 
-# If you want to use in jphacks/D_2110 repository, refer Quick install guide on README file
+# If you want to use in jphacks/D_2110 repository,
+# refer Quick install guide on README file
 # https://github.com/jphacks/D_2110#quick-install-and-use-guide
 # or disable comment-out 3 lines below
 
@@ -66,7 +66,8 @@ def operator(structure=None, header=None):
     # Work operator
     chain_ids_to_work_symmetry_operator = header["chain_ids_to_work_symmetry_operator"]
     # Because of chain name/id of PDB file must be A~Z and a~z,
-    # We can only create biological assembly that consists of less than 26 * 2 = 52 chains
+    # We can only create biological assembly
+    # that consists of less than 26 * 2 = 52 chains
     new_chain_ids_candicate = [
         *[chr(i) for i in range(65, 91)],  # A to Z
         *[chr(i) for i in range(97, 123)],  # a to z
@@ -84,7 +85,8 @@ def operator(structure=None, header=None):
                 Pay attention, please.
                 We can work operators like r' = Ar + b
                 Moreover, this is a chain, not atoms.
-                We can perform like this because we override Chain.__mul__() and Chain.__add__()
+                We can perform like this because
+                we override Chain.__mul__() and Chain.__add__()
 
                 Both of them perform:
                 1. Copy original chain.

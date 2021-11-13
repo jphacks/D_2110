@@ -27,13 +27,28 @@ def upload_assembly(filename, pdb_code):
     return download_url
 
 
+def upload_original(filename, pdb_code):
+    project_id = os.environ["PROJECT_ID"]
+    bucket_id = os.environ["ORIGINAL_PDB_FILE_BUCKECT_ID"]
+    client = gcs.Client(project_id)
+    bucket = client.get_bucket(bucket_id)
+
+    file_id = f"{pdb_code}_assembled.pdb"
+    blob_gcs = bucket.blob(file_id)
+    blob_gcs.upload_from_filename(filename, content_type="text/plain")
+    download_url = f"https://storage.googleapis.com/{bucket_id}/{file_id}"
+    return download_url
+
+
 def fetch_biological_assembly(request):
     # CORS enable
+    # fmt: off
     headers = {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
     }
+    # fmt: on
     if request.method == "OPTIONS":
         return ("", 204, headers)
 
@@ -44,9 +59,15 @@ def fetch_biological_assembly(request):
         pdb_code = data["pdb_code"]
         if type(pdb_code) != str or len(pdb_code) != 4:
             raise ValueError(f"pdb code must be 4 char. Input is {pdb_code}")
-        filename = create_assembly(pdb_code, tmp_dir)
-        download_url = upload_assembly(filename, pdb_code)
-        data = {"message": "ok", "download_url": download_url}
+        assembly_filename = create_assembly(pdb_code, tmp_dir)
+        assembly_url = upload_assembly(assembly_filename, pdb_code)
+        original_filename = os.path.join(tmp_dir, pdb_code, f"pdb{pdb_code}.ent")
+        original_url = upload_original(original_filename, pdb_code)
+        data = {
+            "message": "ok",
+            "assembly_url": assembly_url,
+            "original_url": original_url,
+        }
         return jsonify(data), 200, headers
     except ValueError as err:
         logging.error(err)

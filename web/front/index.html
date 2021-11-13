@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Untitled</title>
+    <title>生物学的構造単位生成器</title>
     <meta name="description" content="This is an example of a meta description.">
     <link rel="stylesheet" href="css/LiteMol-plugin.css" type="text/css" />
     <script src="js/LiteMol-plugin.min.js"></script>
@@ -55,10 +55,8 @@
       $("#submit_button").click( event => {
         event.preventDefault()
         const pdb_code = $('pdb_code').val()
-        const rcsb_url = `https://files.rcsb.org/download/${pdb_code}.pdb`
         if ($("input").first().val().length === 4) {
           $("#result").text("Assembling now...").show()
-          load_structure(plugin2, pdb_code, rcsb_url)
           $.ajax({
             url: api_url,
             dataType: 'json',
@@ -66,8 +64,13 @@
             contentType: 'application/json',
             data: JSON.stringify({pdb_code}),
             success: function (data, textStatus, jQxhr) {
-              load_structure(plugin1, pdb_code, data.download_url)
+              load_structure(plugin2, pdb_code, data.original_url)
+              load_structure(plugin1, pdb_code, data.assembly_url)
               $("#result").text("Done").show()
+            },
+            fail: function (jqXHR, textStatus, errorThrown) {
+              $("#result").text("Request fail").show()
+              console.error(`Status is: ${textStatus}. Error message is: ${errorThrown}`)
             }
           })
           
