@@ -41,7 +41,7 @@
           url: 'https://www.ebi.ac.uk/pdbe/entry-files/download/pdb5v8k.ent',
           format: 'pdb'
         }).then(() => {
-          console.log('Molecule loaded')
+          console.log(`Molecule loaded from: ${url}`)
         }).catch(error => {
           console.error(error)
         })
@@ -54,9 +54,9 @@
 
       $("#submit_button").click( event => {
         event.preventDefault()
-        const pdb_code = $('pdb_code').val()
+        const pdb_code = $('#pdb_code').val()
         if ($("input").first().val().length === 4) {
-          $("#result").text("Assembling now...").show()
+          $("#result").text("Assembling now. This takes about 10 seconds.").show()
           $.ajax({
             url: api_url,
             dataType: 'json',

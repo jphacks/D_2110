@@ -33,7 +33,7 @@ def upload_original(filename, pdb_code):
     client = gcs.Client(project_id)
     bucket = client.get_bucket(bucket_id)
 
-    file_id = f"{pdb_code}_assembled.pdb"
+    file_id = f"{pdb_code}.pdb"
     blob_gcs = bucket.blob(file_id)
     blob_gcs.upload_from_filename(filename, content_type="text/plain")
     download_url = f"https://storage.googleapis.com/{bucket_id}/{file_id}"
