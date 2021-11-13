@@ -38,7 +38,7 @@
       function load_structure(plugin, pdb_code, url) {
         plugin.loadMolecule({
           id: pdb_code,
-          url: 'https://www.ebi.ac.uk/pdbe/entry-files/download/pdb5v8k.ent',
+          url,
           format: 'pdb'
         }).then(() => {
           console.log(`Molecule loaded from: ${url}`)
@@ -64,8 +64,8 @@
             contentType: 'application/json',
             data: JSON.stringify({pdb_code}),
             success: function (data, textStatus, jQxhr) {
-              load_structure(plugin2, pdb_code, data.original_url)
-              load_structure(plugin1, pdb_code, data.assembly_url)
+              load_structure(plugin1, pdb_code, data.original_url)
+              load_structure(plugin2, pdb_code, data.assembly_url)
               $("#result").text("Done").show()
             },
             fail: function (jqXHR, textStatus, errorThrown) {
