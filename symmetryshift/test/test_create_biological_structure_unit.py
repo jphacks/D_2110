@@ -29,11 +29,31 @@ class TestCore(unittest.TestCase):
         original_structure = parser.get_structure(pdb_code, original_file)
         original_header = parse_pdb_header(original_file)
         created_structure = operator(
-            structure=original_structure, header=original_header
+            structure=original_structure, header=original_header, name=pdb_code
         )
 
         self.assertEqual(reference_structure, created_structure)
 
+class TestAnotherPDB(unittest.TestCase):
+    def test_operator(self):
+        pdb_code = "3C70"
+        parser = PDBParser(QUIET=True)
+
+        reference_file = "{}/assets/{}.pdb_rotated".format(
+            os.path.dirname(os.path.abspath(__file__)), pdb_code
+        )
+        reference_structure = parser.get_structure(pdb_code, reference_file)
+
+        original_file = "{}/assets/{}.pdb_original".format(
+            os.path.dirname(os.path.abspath(__file__)), pdb_code
+        )
+        original_structure = parser.get_structure(pdb_code, original_file)
+        original_header = parse_pdb_header(original_file)
+        created_structure = operator(
+            structure=original_structure, header=original_header, name=pdb_code
+        )
+
+        self.assertEqual(reference_structure, created_structure)
 
 class TestCli(unittest.TestCase):
     def setUp(self) -> None:
