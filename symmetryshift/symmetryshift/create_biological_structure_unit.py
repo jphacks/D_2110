@@ -58,44 +58,43 @@ def get_biological_assembly_from_pdb_file(pdb_file):
 
 def operator(structure=None, header=None, name="symmetry"):
     """Create biological assembly as a structure"""
-    # Work operator
-    chain_ids_to_work_symmetry_operator = header["chain_ids_to_work_symmetry_operator"]
-
     new_models = []
-    for i, model in enumerate(structure.get_models()):
-        chains = list(model.get_chains())
-
+    # Work operator
+    for constructed_model_number, constructed_model_operator_dict in enumerate(header["symmetry_operators"]):
         new_chain_ids_candicate = [
-            *[chr(i) for i in range(65, 91)],  # A to Z
-            *[chr(i) for i in range(97, 123)],  # a to z
+                *[chr(i) for i in range(65, 91)],  # A to Z
+                *[chr(i) for i in range(97, 123)],  # a to z
         ]
-        # Assemble
-        new_model = Model(i)
-        for chain in chains:
-            if chain.get_id() in chain_ids_to_work_symmetry_operator:
-                for operator in header["symmetry_operator"]:
-                    """
-                    Pay attention, please.
-                    We can work operators like r' = Ar + b
-                    Moreover, this is a chain, not atoms.
-                    We can perform like this because
-                    we override Chain.__mul__() and Chain.__add__()
+        for model_serial_number, model in enumerate(structure.get_models()):
+            new_model_id = constructed_model_number + model_serial_number
+            new_model = Model(new_model_id)
+            chains = list(model.get_chains())
+            # Assemble
+            for chain in chains:
+                if chain.get_id() in constructed_model_operator_dict["chain_ids"]:
+                    for operator in constructed_model_operator_dict["operators"]:
+                        """
+                        Pay attention, please.
+                        We can work operators like r' = Ar + b
+                        Moreover, this is a chain, not atoms.
+                        We can perform like this because
+                        we override Chain.__mul__() and Chain.__add__()
 
-                    Both of them perform:
-                    1. Copy original chain.
-                    2. Work operator to coodinates of all atoms.
-                    3. Return new chain.
-                    Go /biopython/Bio/PDB/Chain.py if you are interested in this behaviour.
+                        Both of them perform:
+                        1. Copy original chain.
+                        2. Work operator to coodinates of all atoms.
+                        3. Return new chain.
+                        Go /biopython/Bio/PDB/Chain.py if you are interested in this behaviour.
 
-                    Thus, we can write elegant codes like this:
-                    """
-                    new_chain = chain * operator["matrix"] + operator["shift"]
-                    new_chain._id = new_chain_ids_candicate.pop(0)
-                    new_model.add(new_chain)
-            else:
-                chain._id = new_chain_ids_candicate.pop(0)
-                new_model.add(chain)
-        new_models.append(new_model)
+                        Thus, we can write elegant codes like this:
+                        """
+                        new_chain = chain * operator["matrix"] + operator["shift"]
+                        new_chain._id = new_chain_ids_candicate.pop(0)
+                        new_model.add(new_chain)
+                else:
+                    chain._id = new_chain_ids_candicate.pop(0)
+                    new_model.add(chain)
+            new_models.append(new_model)
 
     # Create new structure and input all generated models
     new_structure = Structure(name)
