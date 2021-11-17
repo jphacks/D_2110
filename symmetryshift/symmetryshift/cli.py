@@ -1,4 +1,7 @@
-import argparse, sys, shutil
+import argparse
+import shutil
+import sys
+
 from symmetryshift.create_biological_structure_unit import (
     get_biological_assembly_from_pdb_code,
     get_biological_assembly_from_pdb_file,

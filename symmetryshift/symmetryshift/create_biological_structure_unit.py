@@ -1,5 +1,9 @@
 import os
 
+# and comment out a line below
+from Bio.PDB import PDBIO, PDBList, PDBParser, parse_pdb_header
+from Bio.PDB.Structure import Structure
+
 # If you want to use in jphacks/D_2110 repository,
 # refer Quick install guide on README file
 # https://github.com/jphacks/D_2110#quick-install-and-use-guide
@@ -9,9 +13,6 @@ import os
 # sys.path.append(os.path.join(os.path.dirname(__file__), "../../"))
 # from biopython.Bio.PDB import PDBParser, PDBList, PDBIO, parse_pdb_header
 
-# and comment out a line below
-from Bio.PDB import PDBParser, PDBList, PDBIO, parse_pdb_header
-from Bio.PDB.Structure import Structure
 
 
 def save_structure(structure: Structure, output="out.pdb"):

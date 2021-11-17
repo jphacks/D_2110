@@ -1,11 +1,16 @@
-import tempfile, shutil
-import unittest, os, sys, filecmp
+import filecmp
+import os
+import shutil
+import sys
+import tempfile
+import unittest
 from unittest.mock import patch
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
-from symmetryshift.create_biological_structure_unit import operator
-from symmetryshift.cli import cli
 from Bio.PDB import PDBParser, parse_pdb_header
+
+from symmetryshift.cli import cli
+from symmetryshift.create_biological_structure_unit import operator
 
 
 class TestCore(unittest.TestCase):
