@@ -14,7 +14,6 @@ from Bio.PDB.Structure import Structure
 # from biopython.Bio.PDB import PDBParser, PDBList, PDBIO, parse_pdb_header
 
 
-
 def save_structure(structure: Structure, output="out.pdb"):
     """Save structure as PDB file
     :param structure: A protein structure
@@ -73,13 +72,18 @@ def operator(structure=None, header=None):
         *[chr(i) for i in range(65, 91)],  # A to Z
         *[chr(i) for i in range(97, 123)],  # a to z
     ]
-    # Existing ids
-    chain_ids = [chain.get_id() for chain in chains]
-    # ids can be used for new chain.
-    # id must be unique.
-    new_chain_ids = list(x for x in new_chain_ids_candicate if x not in chain_ids)
+    not_symmetry_ids = set(chain_ids_to_work_symmetry_operator) ^ set(
+        [chain.get_id() for chain in chains]
+    )
+    new_chain_ids_candicate = sorted(
+        list(set(new_chain_ids_candicate) ^ not_symmetry_ids)
+    )
 
-    [model.detach_child(chain.get_id()) for chain in model.get_list()]
+    [
+        model.detach_child(chain.get_id())
+        for chain in model.get_list()
+        if chain.get_id() in chain_ids_to_work_symmetry_operator
+    ]
     for chain in chains:
         if chain.get_id() in chain_ids_to_work_symmetry_operator:
             for operator in header["symmetry_operator"]:
