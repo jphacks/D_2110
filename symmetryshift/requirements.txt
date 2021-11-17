@@ -1,1 +1,1 @@
-git+git://https://github.com/flat35hd99/biopython@master#egg=biopython
+biopython @ git+https://github.com/flat35hd99/biopython@3dfc8cbed6e7c0b5f256c9d1c15ee3231f0882f2
