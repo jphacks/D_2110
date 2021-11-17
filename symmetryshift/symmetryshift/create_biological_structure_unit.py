@@ -65,21 +65,10 @@ def operator(structure=None, header=None, name="symmetry"):
     for i, model in enumerate(structure.get_models()):
         chains = list(model.get_chains())
 
-        new_chain_ids_candicate = sorted(
-            list(
-                set(
-                    # Because of chain name/id of PDB file must be A~Z and a~z,
-                    # We can only create biological assembly
-                    # that consists of less than 26 * 2 = 52 chains
-                    [
-                        *[chr(i) for i in range(65, 91)],  # A to Z
-                        *[chr(i) for i in range(97, 123)],  # a to z
-                    ]
-                )
-                ^ set(chain_ids_to_work_symmetry_operator)
-                ^ set([chain.get_id() for chain in chains])
-            )
-        )
+        new_chain_ids_candicate = [
+            *[chr(i) for i in range(65, 91)],  # A to Z
+            *[chr(i) for i in range(97, 123)],  # a to z
+        ]
         # Assemble
         new_model = Model(i)
         for chain in chains:
@@ -104,6 +93,7 @@ def operator(structure=None, header=None, name="symmetry"):
                     new_chain._id = new_chain_ids_candicate.pop(0)
                     new_model.add(new_chain)
             else:
+                chain._id = new_chain_ids_candicate.pop(0)
                 new_model.add(chain)
         new_models.append(new_model)
 

@@ -34,6 +34,7 @@ class TestCore(unittest.TestCase):
 
         self.assertEqual(reference_structure, created_structure)
 
+
 class TestAnotherPDB(unittest.TestCase):
     def test_operator(self):
         pdb_code = "3C70"
@@ -54,6 +55,7 @@ class TestAnotherPDB(unittest.TestCase):
         )
 
         self.assertEqual(reference_structure, created_structure)
+
 
 class TestCli(unittest.TestCase):
     def setUp(self) -> None:
