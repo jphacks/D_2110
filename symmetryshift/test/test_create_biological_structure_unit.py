@@ -28,11 +28,12 @@ class TestCore(unittest.TestCase):
         )
         original_structure = parser.get_structure(pdb_code, original_file)
         original_header = parse_pdb_header(original_file)
+        print(original_header["symmetry_operator"])
         created_structure = operator(
             structure=original_structure, header=original_header
         )
 
-        assert (reference_structure, created_structure)
+        self.assertEqual(reference_structure, created_structure)
 
 
 class TestCli(unittest.TestCase):

@@ -79,6 +79,7 @@ def operator(structure=None, header=None):
     # id must be unique.
     new_chain_ids = list(x for x in new_chain_ids_candicate if x not in chain_ids)
 
+    [model.detach_child(chain.get_id()) for chain in model.get_list()]
     for chain in chains:
         if chain.get_id() in chain_ids_to_work_symmetry_operator:
             for operator in header["symmetry_operator"]:
@@ -98,7 +99,7 @@ def operator(structure=None, header=None):
                 Thus, we can write elegant codes like this.
                 """
                 new_chain = chain * operator["matrix"] + operator["shift"]
-                new_chain._id = new_chain_ids.pop(0)
+                new_chain._id = new_chain_ids_candicate.pop(0)
                 model.add(new_chain)
 
     # Delete models[0] consists of only unit structure(chains).
