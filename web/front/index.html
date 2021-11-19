@@ -14,6 +14,7 @@
     crossorigin="anonymous"></script>
   <script src="js/LiteMol-plugin.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <style>
     .viewer {
       width: 40rem;
@@ -122,23 +123,27 @@
         $("#result").text("Assembling now. This takes about 10 seconds.").removeClass().addClass("alert alert-primary").show()
         plugin1.clear()
         plugin2.clear()
-        $.ajax({
-          url: api_url,
-          dataType: 'json',
-          type: 'post',
-          contentType: 'application/json',
-          data: JSON.stringify({ pdb_code }),
-          success: function (data, textStatus, jQxhr) {
-            load_structure(plugin1, pdb_code, data.original_url)
-            load_structure(plugin2, pdb_code, data.assembly_url)
+        axios
+          .post(api_url, {
+            pdb_code
+          })
+          .then(res => {
+            load_structure(plugin1, pdb_code, res.data.original_url)
+            load_structure(plugin2, pdb_code, res.data.assembly_url)
             $("#result").text("Assembled. Now loading").removeClass().addClass("alert alert-light").show()
-          },
-          fail: function (jqXHR, textStatus, errorThrown) {
-            $("#result").text("Request fail").removeClass().addClass("alert alert-danger").show()
-            console.error(`Status is: ${textStatus}. Error message is: ${errorThrown}`)
-          },
-        })
-
+          })
+          .catch(err => {
+            if (err.response) {
+              console.error(`Status is: ${err.response.status}. Error message is: ${err.response.data.message}`)
+              if (err.response.status == 410) {
+                $("#result").text(`${pdb_code} is not submited as PDB format or does not exist. Symmetry shift cannot convert it.`).removeClass().addClass("alert alert-danger").show()
+              }
+              $("#result").text("Your request failed unexpectedly")
+            } else {
+              console.log(`Error: ${err.message}`)
+              $("#result").text("Your request failed unexpectedly")
+            }
+          })
       } else {
         $("#result").text("PDB code must be 4 char.").removeClass().addClass("alert alert-danger").show()
       }

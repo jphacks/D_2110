@@ -69,6 +69,16 @@ def fetch_biological_assembly(request):
             "original_url": original_url,
         }
         return jsonify(data), 200, headers
+    except FileNotFoundError as err:
+        logging.error(err)
+        return jsonify(
+            {
+                "message": "Requested PDB code does not exist"
+                "or were not submited as a PDB file format."
+            },
+            410,
+            headers,
+        )
     except ValueError as err:
         logging.error(err)
         return jsonify({"message": str(err)}), 500, headers
