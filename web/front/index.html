@@ -136,16 +136,32 @@
             if (err.response) {
               console.error(`Status is: ${err.response.status}. Error message is: ${err.response.data.message}`)
               if (err.response.status == 410) {
-                $("#result").text(`${pdb_code} is not submited as PDB format or does not exist. Symmetry shift cannot convert it.`).removeClass().addClass("alert alert-danger").show()
+                $("#result")
+                  .text(`${pdb_code} is not submited as PDB format or does not exist. Symmetry shift cannot convert it.`)
+                  .removeClass()
+                  .addClass("alert alert-danger")
+                  .show()
               }
-              $("#result").text("Your request failed unexpectedly")
+              $("#result")
+                .text(`${pdb_code} is not submited as PDB format or does not exist. Symmetry shift cannot convert it.`)
+                .removeClass()
+                .addClass("alert alert-danger")
+                .show()
             } else {
               console.log(`Error: ${err.message}`)
-              $("#result").text("Your request failed unexpectedly")
+              $("#result")
+                .text(`${pdb_code} is not submited as PDB format or does not exist. Symmetry shift cannot convert it.`)
+                .removeClass()
+                .addClass("alert alert-danger")
+                .show()
             }
           })
       } else {
-        $("#result").text("PDB code must be 4 char.").removeClass().addClass("alert alert-danger").show()
+        $("#result")
+          .text("PDB code must be 4 char.")
+          .removeClass()
+          .addClass("alert alert-danger")
+          .show()
       }
       return true;
     })
