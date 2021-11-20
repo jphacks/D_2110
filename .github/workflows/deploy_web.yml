@@ -30,7 +30,7 @@ jobs:
           env_vars_file: ./web/functions/.env.yaml
           ingress_settings: ALLOW_ALL
           region: us-west2
-          memory_mb: 1000
+          memory_mb: 512
 
       - name: setup node
         uses: actions/setup-node@v1
